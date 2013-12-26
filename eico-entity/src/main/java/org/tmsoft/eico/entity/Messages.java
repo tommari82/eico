@@ -8,17 +8,7 @@ package org.tmsoft.eico.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -28,15 +18,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(catalog = "EICO", schema = "EICO_HP14")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Messages.findAll", query = "SELECT m FROM Messages m"),
-    @NamedQuery(name = "Messages.findById", query = "SELECT m FROM Messages m WHERE m.id = :id"),
-    @NamedQuery(name = "Messages.findByText", query = "SELECT m FROM Messages m WHERE m.text = :text"),
-    @NamedQuery(name = "Messages.findByInstime", query = "SELECT m FROM Messages m WHERE m.instime = :instime")})
 public class Messages implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "MESSAGESEQ")
+	@SequenceGenerator(name="MESSAGESEQ", sequenceName = "eico_hp14.sq_messages", initialValue = 1, schema = "eico_hp14", allocationSize = 1)
+	@Basic(optional = false)
     @Column(nullable = false)
     private Long id;
     @Column(length = 10240)

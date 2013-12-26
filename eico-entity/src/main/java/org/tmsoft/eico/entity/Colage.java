@@ -8,14 +8,7 @@ package org.tmsoft.eico.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -26,14 +19,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(catalog = "EICO", schema = "EICO_HP14")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Colage.findAll", query = "SELECT c FROM Colage c"),
-    @NamedQuery(name = "Colage.findById", query = "SELECT c FROM Colage c WHERE c.id = :id"),
-    @NamedQuery(name = "Colage.findByName", query = "SELECT c FROM Colage c WHERE c.name = :name")})
 public class Colage implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "COLAGESEQ")
+	@SequenceGenerator(name="COLAGESEQ", sequenceName = "eico_hp14.sq_colage", initialValue = 1, schema = "eico_hp14", allocationSize = 1)
+	@Basic(optional = false)
     @Column(nullable = false)
     private Long id;
     @Column(length = 64)

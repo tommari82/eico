@@ -8,14 +8,7 @@ package org.tmsoft.eico.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -26,15 +19,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(catalog = "EICO", schema = "EICO_HP14")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM Roles r"),
-    @NamedQuery(name = "Roles.findById", query = "SELECT r FROM Roles r WHERE r.id = :id"),
-    @NamedQuery(name = "Roles.findByCode", query = "SELECT r FROM Roles r WHERE r.code = :code"),
-    @NamedQuery(name = "Roles.findByName", query = "SELECT r FROM Roles r WHERE r.name = :name")})
 public class Roles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ROLESSEQ")
+	@SequenceGenerator(name="ROLESSEQ", sequenceName = "eico_hp14.sq_roles", initialValue = 1,
+			schema = "eico_hp14",
+			allocationSize = 1)
+
+	@Basic(optional = false)
     @Column(nullable = false)
     private Long id;
     @Column(length = 10)

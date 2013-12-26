@@ -7,15 +7,7 @@
 package org.tmsoft.eico.entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -25,13 +17,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "USERS_ROLES", catalog = "EICO", schema = "EICO_HP14")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "UsersRoles.findAll", query = "SELECT u FROM UsersRoles u"),
-    @NamedQuery(name = "UsersRoles.findById", query = "SELECT u FROM UsersRoles u WHERE u.id = :id")})
 public class UsersRoles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "USERSROLESSEQ")
+	@SequenceGenerator(name="USERSROLESSEQ", sequenceName = "eico_hp14.sq_users_roles", initialValue = 1,
+			schema = "eico_hp14",
+			allocationSize = 1)
+	@Basic(optional = false)
     @Column(nullable = false)
     private Long id;
     @JoinColumn(name = "ID_USERS", referencedColumnName = "ID")
