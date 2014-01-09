@@ -12,4 +12,5 @@ import java.util.List;
  * Created by OKAY PC on 26.12.13.
  */
 public interface UsersRepository extends JpaRepository<Users, Long> {
+
 }

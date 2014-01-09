@@ -10,7 +10,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.h2.Driver"/>
-		<property name="url" value="jdbc:h2:/c:/DEV/eico;MODE=ORACLE"/>
+		<property name="url" value="jdbc:h2:/c:/DEV/eico;MODE=ORACLE;auto_server=true"/>
 		<property name="username" value="sa"/>
 		<property name="password" value=""/>
 

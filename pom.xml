@@ -10,6 +10,8 @@
 	<modules>
 		<module>eico-entity</module>
 		<module>eico-repository</module>
+		<module>eico-database</module>
+		<module>eico-utils</module>
 	</modules>
 
 	<packaging>pom</packaging>
