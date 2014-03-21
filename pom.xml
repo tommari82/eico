@@ -36,6 +36,10 @@
 				<artifactId>spring-core</artifactId>
 				<version>${version.org.springframework}</version>
 			</dependency>
+            <!--<dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId></artifactId>
+            </dependency>-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-expression</artifactId>

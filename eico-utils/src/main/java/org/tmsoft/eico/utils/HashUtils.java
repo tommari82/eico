@@ -5,11 +5,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by OKAY PC on 27.12.13.
+ * @author Tomas
  */
 public class HashUtils {
 
 	private static final String SHA_256 = "SHA-256";
+	private static final String MD5 = "MD5";
 
 	public static String getSHA256Hash(String userName, String userPass) {
 
@@ -40,5 +41,13 @@ public class HashUtils {
 		} catch (NoSuchAlgorithmException ns) {
 			return (null);
 		}
+	}
+
+	private static  String getMD5(String input){
+		return getHashPass(MD5, input);
+	}
+
+	private static String getSHA256(String input){
+		return  getHashPass(SHA_256, input);
 	}
 }

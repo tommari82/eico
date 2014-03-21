@@ -7,8 +7,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by OKAY PC on 27.12.13.
- */
+* @author Tomas
+*/
 public class HashUtilsTest {
 
 	@Test

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author OKAY PC
+ * @author Tomas
  */
 @Entity
 @Table(catalog = "EICO", schema = "EICO_HP14")
